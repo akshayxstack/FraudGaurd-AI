@@ -1,0 +1,420 @@
+You are a Senior Backend Engineer specializing in Node.js, Express.js, and production REST APIs.
+
+Continue building my project "FraudGuard AI".
+
+Current Architecture
+====================
+
+React Frontend
+        │
+        ▼
+Express Backend
+        │
+        ▼
+FastAPI ML Service
+        │
+        ▼
+XGBoost Fraud Detection Model
+
+Current Progress
+================
+
+✔ Express backend initialized
+✔ app.js
+✔ server.js
+✔ config
+✔ routes
+✔ controllers
+✔ services
+✔ GET /
+✔ GET /health
+✔ POST /api/predict
+✔ Axios service communicating with FastAPI
+✔ Proper error handling
+✔ Logging implemented
+
+DO NOT MODIFY ANY OF THE ABOVE.
+
+The next milestone is ONLY the CSV Upload Infrastructure.
+
+DO NOT implement prediction yet.
+
+DO NOT call FastAPI after upload.
+
+DO NOT parse CSV data yet.
+
+DO NOT implement authentication.
+
+DO NOT implement a database.
+
+DO NOT generate reports.
+
+We are ONLY building the upload pipeline.
+
+=========================================================
+OBJECTIVE
+=========================================================
+
+Build a professional CSV upload system that will later feed the ML prediction pipeline.
+
+The upload endpoint should only:
+
+Receive CSV
+
+↓
+
+Validate file
+
+↓
+
+Store file safely
+
+↓
+
+Return upload metadata
+
+Nothing more.
+
+=========================================================
+PROJECT STRUCTURE
+=========================================================
+
+Use the existing architecture.
+
+Create only the files that are actually needed.
+
+backend/
+
+config/
+controllers/
+middleware/
+routes/
+services/
+uploads/
+utils/
+
+=========================================================
+TASK 1
+Create Multer Configuration
+=========================================================
+
+Create
+
+config/multer.config.js
+
+Requirements
+
+• Configure Multer for disk storage.
+
+• Save files inside
+
+uploads/
+
+• Automatically create uploads directory if it does not exist.
+
+• Generate unique filenames.
+
+Example
+
+timestamp-random-originalname.csv
+
+Accept only CSV files.
+
+Reject
+
+xlsx
+
+xls
+
+pdf
+
+png
+
+jpg
+
+zip
+
+exe
+
+Return proper validation errors.
+
+Limit upload size.
+
+Use
+
+10 MB
+
+=========================================================
+TASK 2
+Upload Controller
+=========================================================
+
+Create
+
+controllers/upload.controller.js
+
+Responsibilities
+
+Receive uploaded file.
+
+Verify file exists.
+
+Return
+
+{
+    success: true,
+    filename: "...",
+    originalName: "...",
+    size: ...,
+    uploadedAt: "...",
+    path: "...",
+    message: "CSV uploaded successfully"
+}
+
+If upload fails
+
+Return proper HTTP errors.
+
+Use async functions.
+
+Use logging.
+
+=========================================================
+TASK 3
+Upload Route
+=========================================================
+
+Create
+
+routes/upload.routes.js
+
+Register
+
+POST /upload
+
+Middleware order
+
+Multer
+
+↓
+
+Controller
+
+=========================================================
+TASK 4
+Register Route
+=========================================================
+
+Update
+
+routes/index.js
+
+Register
+
+/api/upload
+
+Do not modify existing routes.
+
+=========================================================
+TASK 5
+Validation Middleware
+=========================================================
+
+Create
+
+middleware/uploadValidation.js
+
+Responsibilities
+
+Validate
+
+CSV only
+
+Maximum size
+
+Meaningful error messages
+
+Proper HTTP status codes
+
+=========================================================
+TASK 6
+Utilities
+=========================================================
+
+Create
+
+utils/file.utils.js
+
+Functions
+
+generateUniqueFilename()
+
+formatFileSize()
+
+validateCsvExtension()
+
+Future reusable helpers.
+
+=========================================================
+TASK 7
+Logging
+=========================================================
+
+Log
+
+Upload received
+
+Upload success
+
+Upload rejected
+
+Invalid extension
+
+File too large
+
+Unexpected errors
+
+=========================================================
+TASK 8
+Error Handling
+=========================================================
+
+Return
+
+400
+
+No file uploaded
+
+415
+
+Unsupported media type
+
+413
+
+File too large
+
+500
+
+Unexpected server error
+
+Use consistent JSON responses.
+
+=========================================================
+TASK 9
+Security
+=========================================================
+
+Prevent directory traversal.
+
+Sanitize filenames.
+
+Never trust client filenames.
+
+Allow only
+
+text/csv
+
+application/vnd.ms-excel
+
+Reject everything else.
+
+=========================================================
+TASK 10
+Testing
+=========================================================
+
+Explain how to test using
+
+Postman
+
+and
+
+curl
+
+Provide sample requests.
+
+=========================================================
+IMPORTANT
+=========================================================
+
+DO NOT
+
+Read CSV
+
+Parse CSV
+
+Call FastAPI
+
+Generate predictions
+
+Return fraud results
+
+Store database records
+
+Authenticate users
+
+Generate reports
+
+Those belong to the next milestone.
+
+=========================================================
+Architecture
+=========================================================
+
+Frontend
+
+↓
+
+POST /api/upload
+
+↓
+
+Express Route
+
+↓
+
+Multer
+
+↓
+
+Validation
+
+↓
+
+Controller
+
+↓
+
+Save File
+
+↓
+
+Return Metadata
+
+=========================================================
+Deliverables
+=========================================================
+
+Generate
+
+config/multer.config.js
+
+middleware/uploadValidation.js
+
+controllers/upload.controller.js
+
+routes/upload.routes.js
+
+utils/file.utils.js
+
+Update routes/index.js
+
+Explain every file.
+
+Explain request flow.
+
+Explain how this prepares the system for the next phase (CSV parsing and ML prediction).
+
+Keep the implementation clean, modular, production-ready, and beginner-friendly.
+
+Do NOT over-engineer the solution.

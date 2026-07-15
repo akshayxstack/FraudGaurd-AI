@@ -1,0 +1,3 @@
+[FraudGuard Backend] Server running on http://0.0.0.0:5000
+[FraudGuard Backend] ML Service URL: http://localhost:8000
+[FraudGuard Backend] Environment: development

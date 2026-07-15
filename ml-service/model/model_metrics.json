@@ -1,0 +1,13 @@
+{
+  "threshold": 0.95,
+  "precision": 0.7757,
+  "recall": 0.8469,
+  "f1_score": 0.8098,
+  "roc_auc": 0.9775,
+  "true_positives": 83,
+  "false_positives": 24,
+  "true_negatives": 56840,
+  "false_negatives": 15,
+  "total_fraud_cases": 98,
+  "total_flagged": 107
+}

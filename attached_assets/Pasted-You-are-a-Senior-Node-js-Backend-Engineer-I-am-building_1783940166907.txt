@@ -1,0 +1,122 @@
+You are a Senior Node.js Backend Engineer.
+
+I am building the Express backend for my project "FraudGuard AI".
+
+Current Status:
+- The backend folder has been created.
+- npm has been initialized.
+- Dependencies are installed:
+  - express
+  - cors
+  - dotenv
+  - axios
+  - multer
+  - nodemon
+- package.json scripts are configured.
+
+Your task is to continue from here.
+
+Requirements:
+
+1. Create a clean, professional backend folder structure.
+
+The backend should contain only the folders needed now:
+
+backend/
+│
+├── config/
+├── controllers/
+├── middleware/
+├── routes/
+├── services/
+├── uploads/
+├── utils/
+├── server.js
+├── app.js
+├── .env
+├── .gitignore
+└── package.json
+
+2. Create the files with production-ready but beginner-friendly code.
+
+3. Create app.js that:
+- Configures Express
+- Configures CORS
+- Loads dotenv
+- Enables express.json()
+- Exports the Express app
+
+4. Create server.js that:
+- Imports app.js
+- Reads PORT from .env
+- Starts the server
+- Prints a clean startup message
+
+5. Create:
+GET /
+Returns:
+
+{
+  "service": "FraudGuard AI Backend",
+  "status": "Running",
+  "version": "1.0.0"
+}
+
+6. Create:
+GET /health
+
+Returns:
+
+{
+  "status": "Healthy"
+}
+
+7. Create .env
+
+Example:
+
+PORT=5000
+FASTAPI_URL=http://127.0.0.1:8001
+
+8. Create .gitignore
+
+Ignore:
+
+node_modules/
+.env
+uploads/
+logs/
+
+9. Use ES Modules.
+
+Use:
+
+"type": "module"
+
+Do NOT use CommonJS require().
+
+10. Follow best practices:
+
+- Clean folder organization
+- Good comments
+- Proper error handling
+- Logging where appropriate
+- Keep code modular
+
+11. Do NOT implement:
+- Authentication
+- Database
+- File upload
+- FastAPI integration
+- CSV parsing
+
+Those will be implemented later.
+
+12. At the end explain:
+- Every file created
+- Why it exists
+- How the request flows from server.js to app.js
+- How this architecture will scale as more routes are added
+
+Do NOT over-engineer the project.
+Keep it simple, modular, and production-ready.

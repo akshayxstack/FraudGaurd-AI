@@ -1,0 +1,197 @@
+You are a Senior Node.js Backend Engineer.
+
+Continue building my FraudGuard AI backend.
+
+Current Status:
+- Express backend is initialized.
+- app.js and server.js are working.
+- GET / and GET /health are working.
+- Folder structure is complete.
+- Controllers, routes, services, config, middleware, uploads and utils folders exist.
+
+The FastAPI ML microservice is already running independently.
+
+FastAPI Base URL:
+http://127.0.0.1:8001
+
+FastAPI Endpoints:
+GET /health
+POST /predict
+GET /model-info
+
+Your task is to integrate the Express backend with the FastAPI service using a clean service layer.
+
+==========================================
+Requirements
+==========================================
+
+1. Create services/fastapi.service.js
+
+This file should:
+- Create a reusable Axios client.
+- Read the FastAPI URL from config/index.js or .env.
+- Export reusable functions:
+  - checkHealth()
+  - getModelInfo()
+  - predictTransactions()
+
+No Express code should exist here.
+
+Only Axios communication.
+
+==========================================
+
+2. Create controllers/predict.controller.js
+
+Responsibilities:
+
+- Receive requests from Express routes.
+- Validate that request.transactions exists.
+- Call fastapi.service.js.
+- Return the FastAPI response.
+- Handle all errors gracefully.
+- Return appropriate HTTP status codes.
+- Log useful errors.
+
+Do NOT perform prediction logic here.
+
+==========================================
+
+3. Create routes/predict.routes.js
+
+Register:
+
+POST /predict
+
+Connect it to predict.controller.js.
+
+==========================================
+
+4. Register the route
+
+Update routes/index.js
+
+Add:
+
+/api/predict
+
+without changing existing routes.
+
+==========================================
+
+5. Error Handling
+
+If FastAPI is unavailable:
+
+Return
+
+503 Service Unavailable
+
+with a clean JSON response.
+
+If FastAPI returns validation errors,
+
+forward them correctly.
+
+==========================================
+
+6. Logging
+
+Log:
+
+Incoming prediction request
+
+FastAPI response time
+
+Prediction success
+
+Prediction failure
+
+==========================================
+
+7. Code Quality
+
+Use:
+- ES Modules
+- Async/Await
+- Axios
+- Try/Catch
+- Clean comments
+- Modular functions
+
+==========================================
+
+8. Do NOT implement
+
+CSV upload
+
+Authentication
+
+Database
+
+JWT
+
+Multer
+
+File parsing
+
+Those come later.
+
+==========================================
+
+9. Testing
+
+Explain how to test the endpoint using Swagger (FastAPI) and Postman.
+
+Provide a sample Express request that forwards this payload to FastAPI:
+
+{
+  "transactions": [
+    {
+      "features": [
+        0,0,0,0,0,
+        0,0,0,0,0,
+        0,0,0,0,0,
+        0,0,0,0,0,
+        0,0,0,0,0,
+        0,0,0,0,0
+      ]
+    }
+  ]
+}
+
+==========================================
+
+10. Keep Architecture Clean
+
+The request flow should be:
+
+React
+    ↓
+Express Route
+    ↓
+Controller
+    ↓
+Service
+    ↓
+Axios
+    ↓
+FastAPI
+    ↓
+XGBoost Model
+
+Controllers should never directly use Axios.
+
+Only services communicate with FastAPI.
+
+==========================================
+
+After generating the code, explain:
+
+- Every file created
+- Why each file exists
+- How the request flows through the backend
+- How this design supports future features like CSV uploads, authentication, and report generation.
+
+Do not over-engineer the project.
+Keep it clean, modular, production-ready, and beginner-friendly.

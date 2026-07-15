@@ -1,0 +1,419 @@
+You are a Senior Backend Architect and Principal Software Engineer.
+
+The FraudGuard AI backend has already been fully implemented and follows a layered architecture:
+
+Routes
+→ Controllers
+→ Services
+→ Axios
+→ FastAPI ML Service
+
+DO NOT redesign the architecture.
+
+DO NOT rewrite the project.
+
+DO NOT move files unnecessarily.
+
+Maintain the existing architecture.
+
+Your task is ONLY to fix the issues discovered during the technical audit while preserving all existing functionality.
+
+====================================================
+CRITICAL REQUIREMENT
+====================================================
+
+The backend MUST continue to work exactly as before.
+
+Fix only the identified issues.
+
+If a fix changes any public API behavior, explain why.
+
+====================================================
+PRIORITY 1 (BLOCKING)
+====================================================
+
+1. FEATURE MISMATCH
+
+This is the highest priority issue.
+
+The trained XGBoost model expects features in this order:
+
+[V1, V2, ..., V28, Amount_scaled, Time_scaled]
+
+The current CSV upload pipeline produces
+
+[Time, V1, V2, ..., V28, Amount]
+
+This results in completely incorrect predictions.
+
+Implement the correct preprocessing before calling FastAPI.
+
+Requirements:
+
+• Preserve the CSV schema for users.
+
+• Do NOT require users to upload scaled values.
+
+• Load amount_scaler.pkl and time_scaler.pkl.
+
+• Scale Amount.
+
+• Scale Time.
+
+• Reorder features into
+
+[V1..V28, Amount_scaled, Time_scaled]
+
+before sending them to FastAPI.
+
+• Ensure feature_names.json and model_config.json remain consistent.
+
+• Verify feature count and ordering.
+
+This fix is mandatory.
+
+====================================================
+2. FASTAPI ERROR FORWARDING
+====================================================
+
+Current upload.controller checks
+
+mlErr.statusCode
+
+Axios exposes
+
+error.response?.status
+
+Update the upload controller to correctly detect FastAPI 503 responses.
+
+Return the correct HTTP status to the frontend.
+
+====================================================
+3. VERIFY DEPENDENCIES
+====================================================
+
+Ensure package.json includes every required dependency.
+
+Verify csv-parser exists.
+
+If missing, add it.
+
+Do not introduce unused packages.
+
+====================================================
+4. ADD 404 HANDLER
+====================================================
+
+After all routes add
+
+JSON 404 response
+
+Example
+
+{
+    success:false,
+    message:"Route not found"
+}
+
+Do NOT return HTML.
+
+====================================================
+5. GLOBAL ERROR HANDLER
+====================================================
+
+Add Express global error middleware.
+
+Requirements
+
+• JSON responses only
+
+• Preserve existing error shapes
+
+• Log unexpected errors
+
+• Hide internal stack traces in production
+
+====================================================
+PRIORITY 2
+====================================================
+
+6. CORS
+
+Current backend allows *
+
+Read allowed origins from config.
+
+Use
+
+CORS_ORIGINS
+
+from environment variables.
+
+Provide sensible development defaults.
+
+====================================================
+7. JSON BODY LIMIT
+
+Set explicit limit
+
+express.json({
+    limit:"1mb"
+})
+
+====================================================
+8. PROCESS HANDLERS
+
+In server.js add
+
+process.on("uncaughtException")
+
+process.on("unhandledRejection")
+
+Log errors gracefully.
+
+Exit safely if required.
+
+====================================================
+9. FILE CLEANUP
+
+Uploaded CSV files should not remain forever.
+
+After parsing succeeds
+
+Delete temporary upload.
+
+If parsing fails
+
+Delete temporary upload.
+
+Prevent disk accumulation.
+
+====================================================
+10. UPLOAD PATH
+
+Current uploads path depends on current working directory.
+
+Resolve uploads directory relative to the source file using import.meta.url.
+
+Prevent path issues after deployment.
+
+====================================================
+11. DUPLICATED CONSTANTS
+
+MAX_SIZE_BYTES currently exists in multiple files.
+
+Move it into config/index.js.
+
+Import it wherever required.
+
+Single source of truth.
+
+====================================================
+12. REMOVE DEAD CODE
+
+Delete unused variables.
+
+Remove any dead imports.
+
+Remove unreachable branches.
+
+====================================================
+13. RESPONSE CONSISTENCY
+
+Every endpoint should follow one response format.
+
+Success
+
+{
+    success:true,
+    data:{}
+}
+
+Failure
+
+{
+    success:false,
+    message:"",
+    error:""
+}
+
+Remove inconsistent response shapes.
+
+====================================================
+14. VALIDATION
+
+Strengthen validation before FastAPI.
+
+Validate
+
+• features array exists
+
+• feature count
+
+• numeric values
+
+• null values
+
+• NaN
+
+Reject invalid payloads before network calls.
+
+====================================================
+15. HEALTH ENDPOINT
+
+Improve
+
+/api/health
+
+Return
+
+Backend
+
+FastAPI
+
+Model Loaded
+
+Version
+
+Timestamp
+
+Status
+
+instead of only
+
+Healthy
+
+====================================================
+16. LOGGING
+
+Keep current logging style.
+
+Improve consistency.
+
+Log
+
+Upload started
+
+Validation complete
+
+Parsing complete
+
+Prediction complete
+
+Gemini complete
+
+Cleanup complete
+
+Processing time
+
+Never log
+
+Passwords
+
+Tokens
+
+Sensitive data
+
+====================================================
+17. PERFORMANCE
+
+Where multiple filter() calls calculate summary statistics
+
+Replace with
+
+single reduce()
+
+Avoid repeated array scans.
+
+====================================================
+18. SECURITY
+
+Add
+
+Helmet
+
+Rate Limiting
+
+Secure headers
+
+Protect upload endpoint
+
+Protect predict endpoint
+
+Do not interfere with local development.
+
+====================================================
+19. DEPLOYMENT READINESS
+
+Review
+
+Environment variables
+
+Missing startup validation
+
+localhost defaults
+
+CORS
+
+Uploads
+
+Unhandled exceptions
+
+Dependency consistency
+
+Ensure the backend is production-ready.
+
+====================================================
+20. TESTING
+
+Do not create a full testing framework.
+
+But identify any missing validation that could cause runtime failures.
+
+Strengthen code defensively.
+
+====================================================
+OUTPUT
+====================================================
+
+At completion provide
+
+1.
+
+Files modified
+
+2.
+
+Reason for every modification
+
+3.
+
+Any breaking changes
+
+4.
+
+Performance improvements
+
+5.
+
+Security improvements
+
+6.
+
+Deployment improvements
+
+7.
+
+Whether the backend is now production-ready
+
+IMPORTANT
+
+Do NOT redesign.
+
+Do NOT rewrite.
+
+Do NOT change architecture.
+
+Maintain the existing layered architecture exactly.
+
+Focus only on correctness, security, deployment readiness, and maintainability while preserving all existing functionality.

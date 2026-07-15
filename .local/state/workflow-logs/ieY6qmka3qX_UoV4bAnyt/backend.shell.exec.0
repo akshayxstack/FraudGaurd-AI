@@ -1,0 +1,9 @@
+─────────────────────────────────────────
+  FraudGuard AI — Backend
+─────────────────────────────────────────
+  Status  : Running
+  Port    : 5000
+  Env     : development
+─────────────────────────────────────────
+[PredictController] Incoming prediction request.
+[PredictController] FastAPI unreachable after 8ms. Error: connect ECONNREFUSED 127.0.0.1:8001

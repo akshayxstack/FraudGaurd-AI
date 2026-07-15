@@ -1,0 +1,31 @@
+─────────────────────────────────────────
+  FraudGuard AI — Backend
+─────────────────────────────────────────
+  Status  : Running
+  Port    : 5000
+  Env     : development
+─────────────────────────────────────────
+[UploadController] Upload received: "valid.csv" (0.00 B)
+[UploadController] CSV parsing started: "1783941238610-f04b4367-valid.csv"
+[UploadController] Rows parsed: 0
+[UploadController] Validation failed after 3ms. Errors: 1
+[UploadController] Upload received: "missing.csv" (34.00 B)
+[UploadController] CSV parsing started: "1783941238623-1889b2d9-missing.csv"
+[UploadController] Rows parsed: 1
+[UploadController] Validation failed after 3ms. Errors: 1
+[UploadController] Upload received: "badval.csv" (0.00 B)
+[UploadController] CSV parsing started: "1783941238637-a8ac07e9-badval.csv"
+[UploadController] Rows parsed: 0
+[UploadController] Validation failed after 1ms. Errors: 1
+[UploadController] Upload received: "valid.csv" (1.87 KB)
+[UploadController] CSV parsing started: "1783941249729-b0f6596d-valid.csv"
+[UploadController] Rows parsed: 8
+[UploadController] Validation success — 8 row(s) in 3ms.
+[UploadController] Upload received: "missing.csv" (34.00 B)
+[UploadController] CSV parsing started: "1783941249743-7cd0b5a5-missing.csv"
+[UploadController] Rows parsed: 1
+[UploadController] Validation failed after 1ms. Errors: 1
+[UploadController] Upload received: "badval.csv" (235.00 B)
+[UploadController] CSV parsing started: "1783941249758-789eac0c-badval.csv"
+[UploadController] Rows parsed: 1
+[UploadController] Validation failed after 2ms. Errors: 1

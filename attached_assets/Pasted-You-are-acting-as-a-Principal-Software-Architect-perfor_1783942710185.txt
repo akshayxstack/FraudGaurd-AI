@@ -1,0 +1,207 @@
+You are acting as a Principal Software Architect performing the FINAL backend verification before production deployment.
+
+The backend has already undergone one complete audit and remediation.
+
+Your job is NOT to redesign or refactor the project.
+
+DO NOT change the architecture.
+
+DO NOT move files.
+
+DO NOT rewrite controllers or services unless a real bug exists.
+
+Your task is to verify correctness, identify hidden issues, and fix only genuine defects.
+
+====================================================
+PHASE 1 — ARCHITECTURE VERIFICATION
+====================================================
+
+Verify that the architecture remains:
+
+Routes
+→ Controllers
+→ Services
+→ FastAPI
+→ ML Model
+
+Ensure:
+
+• No business logic exists inside routes.
+• Controllers only orchestrate requests.
+• Services contain business logic.
+• No circular dependencies.
+• No duplicated logic.
+• No unused services.
+
+Report any violations.
+
+====================================================
+PHASE 2 — FEATURE PIPELINE VERIFICATION
+====================================================
+
+Verify the complete prediction pipeline.
+
+CSV
+
+↓
+
+Validation
+
+↓
+
+Parsing
+
+↓
+
+Feature Mapping
+
+↓
+
+Scaling
+
+↓
+
+FastAPI
+
+↓
+
+Prediction
+
+↓
+
+Summary
+
+Verify that:
+
+• Feature order exactly matches feature_names.json.
+• Amount scaling matches Python.
+• Time scaling matches Python.
+• Total feature count is correct.
+• No feature is dropped.
+• No feature is duplicated.
+• Prediction probabilities are identical to direct FastAPI calls.
+
+If differences exist, explain why.
+
+====================================================
+PHASE 3 — ENDPOINT REVIEW
+====================================================
+
+Review every endpoint.
+
+Verify:
+
+• Correct HTTP status codes
+• Consistent JSON responses
+• Proper validation
+• Error handling
+• Logging
+• Authentication (where applicable)
+
+Look for:
+
+• Missing await
+• Missing return
+• Promise leaks
+• Unhandled exceptions
+• Async race conditions
+
+====================================================
+PHASE 4 — PERFORMANCE REVIEW
+====================================================
+
+Review for:
+
+• Unnecessary loops
+• Repeated array scans
+• Blocking filesystem operations
+• Memory leaks
+• Inefficient parsing
+• Unnecessary object copies
+
+Optimize only if measurable.
+
+====================================================
+PHASE 5 — SECURITY REVIEW
+====================================================
+
+Verify:
+
+• Helmet
+• Rate limiting
+• CORS
+• Environment variable validation
+• Upload validation
+• MIME validation
+• File cleanup
+• Path traversal protection
+• Sensitive logging
+• Input sanitization
+
+Do not add unnecessary security libraries.
+
+====================================================
+PHASE 6 — CODE QUALITY REVIEW
+====================================================
+
+Check:
+
+• Dead code
+• Unused imports
+• Duplicate constants
+• Duplicate helper functions
+• Large functions that should reasonably be split
+• Poor variable names
+• Magic numbers
+
+Only fix genuine maintainability issues.
+
+====================================================
+PHASE 7 — DEPLOYMENT REVIEW
+====================================================
+
+Verify deployment readiness.
+
+Check:
+
+• package.json
+• Startup scripts
+• Environment variables
+• Upload directory creation
+• Relative paths
+• Production defaults
+• Cross-platform compatibility
+• Render compatibility
+
+====================================================
+PHASE 8 — TESTABILITY REVIEW
+====================================================
+
+Identify anything that would make future testing difficult.
+
+Suggest only minimal improvements.
+
+====================================================
+PHASE 9 — FINAL VERDICT
+====================================================
+
+Provide:
+
+1. Files inspected
+2. Files modified (if any)
+3. Bugs found
+4. Bugs fixed
+5. Remaining warnings
+6. Security score (/10)
+7. Performance score (/10)
+8. Maintainability score (/10)
+9. Deployment readiness (/10)
+10. Overall backend readiness (/10)
+
+If no modifications are required, explicitly state:
+
+"The backend passed the final verification audit. No further backend fixes are required before frontend integration."
+
+Do not invent improvements.
+
+Only report real, verifiable issues.

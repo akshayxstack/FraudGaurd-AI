@@ -1,0 +1,11 @@
+─────────────────────────────────────────
+  FraudGuard AI — Backend
+─────────────────────────────────────────
+  Status  : Running
+  Port    : 5000
+  Env     : development
+─────────────────────────────────────────
+[UploadController] Upload received: "test.csv" (32.00 B)
+[UploadController] Upload successful: "1783941026767-685a9254-test.csv"
+[UploadValidation] File rejected — unsupported type. Message: Only CSV files are accepted (.csv with text/csv or application/vnd.ms-excel MIME type).
+[UploadValidation] Request rejected — no file provided.

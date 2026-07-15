@@ -1,0 +1,16 @@
+─────────────────────────────────────────
+  FraudGuard AI — Backend
+─────────────────────────────────────────
+  Status   : Running
+  Port     : 5000
+  Env      : development
+  ML URL   : http://127.0.0.1:8001
+─────────────────────────────────────────
+[PredictController] Incoming prediction request.
+[PredictController] Rejected — missing or empty transactions array.
+[PredictController] Incoming prediction request.
+[UploadValidation] Rejected — no file provided.
+[PredictController] Incoming prediction request.
+[PredictController] Incoming prediction request.
+[PredictController] Rejected — missing or empty transactions array.
+[PredictController] Incoming prediction request.

@@ -1,0 +1,72 @@
+Project Name:
+FraudGuard AI
+
+Project Overview:
+
+FraudGuard AI is a full-stack AI-powered financial fraud detection system that detects fraudulent credit card transactions using a trained XGBoost machine learning model.
+
+The project follows a microservice architecture where the machine learning model is completely separated from the application backend.
+
+Architecture:
+
+React Frontend
+        │
+        ▼
+Express.js Backend
+        │
+        ▼
+FastAPI ML Service
+        │
+        ▼
+XGBoost Fraud Detection Model
+
+Current Progress:
+
+✔ Trained an XGBoost fraud detection model using the Kaggle Credit Card Fraud Detection dataset.
+✔ Saved the trained model and preprocessing artifacts:
+   - fraud_model.pkl
+   - amount_scaler.pkl
+   - time_scaler.pkl
+   - feature_names.json
+   - model_config.json
+   - model_metrics.json
+
+✔ Built a FastAPI microservice that:
+   - Loads the trained model at startup
+   - Exposes a /predict endpoint
+   - Exposes a /health endpoint
+   - Exposes a /model-info endpoint
+   - Returns fraud probability, fraud classification, and risk level
+   - Includes Swagger documentation
+   - Uses Pydantic validation
+   - Uses structured logging
+   - Is production-ready
+
+Now I am starting the Express backend.
+
+The Express backend is NOT responsible for machine learning.
+
+Its responsibilities are:
+- Receive requests from the frontend
+- Validate incoming requests
+- Handle CSV uploads
+- Parse uploaded files
+- Call the FastAPI prediction service
+- Return predictions to the frontend
+- Handle business logic
+- Prepare for future authentication and database integration
+
+The Express backend will communicate with the FastAPI service using HTTP requests (Axios).
+
+The frontend will NEVER communicate directly with the FastAPI service.
+
+The architecture should be clean, modular, scalable, and production-ready while remaining beginner-friendly.
+
+Important Rules:
+- Do not over-engineer the project.
+- Follow industry best practices.
+- Use ES Modules.
+- Keep the code modular.
+- Write clean, well-commented code.
+- Explain architectural decisions.
+- Preserve a clear separation between the Express backend and the FastAPI ML service.

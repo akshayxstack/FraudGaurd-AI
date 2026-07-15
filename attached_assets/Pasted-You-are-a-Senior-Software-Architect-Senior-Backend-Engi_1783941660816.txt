@@ -1,0 +1,537 @@
+You are a Senior Software Architect, Senior Backend Engineer, Senior ML Engineer, DevOps Engineer, and Code Reviewer.
+
+Perform a COMPLETE technical audit of my FraudGuard AI backend and ML services.
+
+Do NOT generate new features.
+
+Do NOT rewrite the project.
+
+Do NOT over-engineer.
+
+Your only goal is to verify that everything built so far is production-ready, logically correct, secure, scalable, and follows best practices.
+
+=========================================================
+PROJECT OVERVIEW
+=========================================================
+
+Project Name:
+FraudGuard AI
+
+Architecture
+
+React Frontend
+        │
+        ▼
+Express Backend
+        │
+        ▼
+FastAPI ML Service
+        │
+        ▼
+XGBoost Fraud Detection Model
+
+=========================================================
+CURRENT IMPLEMENTATION
+=========================================================
+
+Machine Learning
+
+✔ Dataset analysis
+✔ Model training
+✔ Model evaluation
+✔ Model persistence
+✔ fraud_model.pkl
+✔ feature_names.json
+✔ model_config.json
+✔ model_metrics.json
+✔ amount_scaler.pkl
+✔ time_scaler.pkl
+
+=========================================================
+
+FastAPI
+
+✔ Model loading
+✔ Startup lifecycle
+✔ Logging
+✔ Error handling
+✔ Swagger documentation
+✔ /health
+✔ /predict
+✔ /model-info
+✔ Pydantic validation
+✔ CORS
+✔ Configuration
+✔ Risk level generation
+
+=========================================================
+
+Express Backend
+
+✔ Modular architecture
+✔ app.js
+✔ server.js
+✔ config
+✔ controllers
+✔ routes
+✔ services
+✔ middleware
+✔ utils
+
+=========================================================
+
+FastAPI Integration
+
+✔ Axios service
+✔ Prediction controller
+✔ Predict routes
+✔ Health handling
+✔ Error forwarding
+✔ Logging
+
+=========================================================
+
+CSV Upload
+
+✔ Multer
+✔ Upload validation
+✔ Upload controller
+✔ Upload routes
+✔ Upload middleware
+✔ Upload utilities
+
+=========================================================
+
+CSV Processing
+
+✔ Streaming parser
+✔ csv-parser
+✔ CSV validation
+✔ Schema validation
+✔ Numeric validation
+✔ Required columns
+✔ Duplicate column detection
+✔ Empty row detection
+
+=========================================================
+
+Prediction Pipeline
+
+✔ Feature mapper
+✔ FastAPI communication
+✔ Prediction merging
+✔ Summary generation
+✔ Risk statistics
+✔ Response generation
+
+=========================================================
+YOUR TASK
+=========================================================
+
+Perform a complete audit.
+
+Review every file.
+
+Review every layer.
+
+Review the entire request lifecycle.
+
+=========================================================
+CHECKLIST
+=========================================================
+
+1.
+
+Project Architecture
+
+Is the architecture clean?
+
+Does it follow separation of concerns?
+
+Is it scalable?
+
+=========================================================
+
+2.
+
+Folder Structure
+
+Is every folder in the correct place?
+
+Any unnecessary folders?
+
+Any missing folders?
+
+=========================================================
+
+3.
+
+FastAPI Review
+
+Startup
+
+Model loading
+
+Health endpoint
+
+Predict endpoint
+
+Swagger
+
+Logging
+
+Error handling
+
+Security
+
+Performance
+
+=========================================================
+
+4.
+
+Express Review
+
+Server
+
+App
+
+Routes
+
+Controllers
+
+Services
+
+Middleware
+
+Utilities
+
+Configuration
+
+=========================================================
+
+5.
+
+CSV Upload
+
+Security
+
+Validation
+
+Multer
+
+Storage
+
+Filename generation
+
+Directory traversal protection
+
+=========================================================
+
+6.
+
+CSV Parsing
+
+Streaming
+
+Memory efficiency
+
+Validation
+
+Error handling
+
+Column ordering
+
+Type conversion
+
+=========================================================
+
+7.
+
+Prediction Pipeline
+
+Feature mapping
+
+FastAPI communication
+
+Prediction merge
+
+Summary generation
+
+Average probability
+
+Risk classification
+
+=========================================================
+
+8.
+
+Error Handling
+
+Review every HTTP status code.
+
+400
+
+401
+
+403
+
+404
+
+413
+
+415
+
+422
+
+429
+
+500
+
+503
+
+Are they used correctly?
+
+=========================================================
+
+9.
+
+Logging
+
+Review logging.
+
+Missing logs?
+
+Sensitive information exposed?
+
+Should anything be improved?
+
+=========================================================
+
+10.
+
+Configuration
+
+Review
+
+.env
+
+config
+
+constants
+
+Secrets
+
+API URLs
+
+=========================================================
+
+11.
+
+Security
+
+Review
+
+CORS
+
+Input validation
+
+CSV uploads
+
+Path traversal
+
+MIME validation
+
+File size
+
+JSON validation
+
+Injection risks
+
+=========================================================
+
+12.
+
+Performance
+
+Review
+
+Streaming
+
+Memory usage
+
+Repeated object creation
+
+Model loading
+
+Axios usage
+
+Response generation
+
+=========================================================
+
+13.
+
+Maintainability
+
+Any duplicated logic?
+
+Any files too large?
+
+Any functions should be extracted?
+
+Any dead code?
+
+=========================================================
+
+14.
+
+Production Readiness
+
+Can this backend be deployed?
+
+Would Render deployment work?
+
+Any deployment issues?
+
+=========================================================
+
+15.
+
+Code Quality
+
+Review
+
+Naming
+
+Formatting
+
+Comments
+
+Documentation
+
+Type safety
+
+Readability
+
+=========================================================
+
+16.
+
+Scalability
+
+Can this project grow?
+
+Authentication
+
+Database
+
+Reports
+
+Analytics
+
+History
+
+Admin panel
+
+Without major refactoring?
+
+=========================================================
+
+17.
+
+Testing
+
+Identify
+
+Missing unit tests
+
+Missing integration tests
+
+Missing API tests
+
+Missing edge cases
+
+=========================================================
+
+18.
+
+Final Score
+
+Give ratings
+
+Architecture
+
+Backend
+
+FastAPI
+
+Express
+
+ML Integration
+
+Security
+
+Performance
+
+Scalability
+
+Maintainability
+
+Deployment Readiness
+
+Overall Project
+
+=========================================================
+
+19.
+
+Recommendations
+
+List only HIGH PRIORITY improvements.
+
+Ignore tiny style issues.
+
+Do not suggest unnecessary complexity.
+
+Do not recommend Docker, Kubernetes, Redis, Microservices, Authentication, or Databases unless absolutely required.
+
+Focus only on improvements that genuinely increase project quality.
+
+=========================================================
+
+20.
+
+Final Verdict
+
+Answer:
+
+Is the backend production-ready for this project?
+
+Is the architecture professional?
+
+Would this project impress recruiters?
+
+Would this project be suitable for a GitHub portfolio?
+
+Would this project be suitable as a final-year AI project?
+
+=========================================================
+
+IMPORTANT
+
+Do NOT rewrite code.
+
+Do NOT generate new features.
+
+Do NOT redesign the architecture.
+
+Only review and audit.
+
+Be brutally honest.
+
+Point out any real architectural, security, scalability, or maintainability issues.
+
+Ignore minor formatting preferences.
+
+Provide a detailed technical review with explanations for every major observation.

@@ -1,0 +1,18 @@
+─────────────────────────────────────────
+  FraudGuard AI — Backend
+─────────────────────────────────────────
+  Status   : Running
+  Port     : 5000
+  Env      : development
+  ML URL   : http://127.0.0.1:8001
+─────────────────────────────────────────
+ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader [90m(file:///home/runner/workspace/backend/[39mnode_modules/[4mexpress-rate-limit[24m/dist/index.mjs:352:13[90m)[39m
+    at wrappedValidations.<computed> [as xForwardedForHeader] [90m(file:///home/runner/workspace/backend/[39mnode_modules/[4mexpress-rate-limit[24m/dist/index.mjs:675:22[90m)[39m
+    at Object.keyGenerator [90m(file:///home/runner/workspace/backend/[39mnode_modules/[4mexpress-rate-limit[24m/dist/index.mjs:782:20[90m)[39m
+    at [90mfile:///home/runner/workspace/backend/[39mnode_modules/[4mexpress-rate-limit[24m/dist/index.mjs:864:32
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async [90mfile:///home/runner/workspace/backend/[39mnode_modules/[4mexpress-rate-limit[24m/dist/index.mjs:825:5 {
+  code: [32m'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR'[39m,
+  help: [32m'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'[39m
+}

@@ -1,0 +1,379 @@
+You are a Senior Backend Engineer specializing in Node.js, Express.js, REST APIs, and AI application integration.
+
+Continue building my FraudGuard AI backend.
+
+Current Progress
+================
+
+✔ Express backend completed
+
+✔ FastAPI integration completed
+
+✔ CSV upload completed
+
+✔ CSV parsing completed
+
+✔ CSV validation completed
+
+✔ Validated rows returned successfully
+
+DO NOT modify any existing functionality.
+
+==========================================================
+OBJECTIVE
+==========================================================
+
+Implement the complete prediction pipeline.
+
+Current pipeline:
+
+CSV Upload
+
+↓
+
+Parse CSV
+
+↓
+
+Validate CSV
+
+↓
+
+Validated JSON Objects
+
+Now continue with:
+
+Validated Objects
+
+↓
+
+Convert into FastAPI format
+
+↓
+
+Call FastAPI
+
+↓
+
+Receive Predictions
+
+↓
+
+Merge Predictions
+
+↓
+
+Return Final JSON
+
+==========================================================
+TASK 1
+
+Create
+
+services/featureMapper.service.js
+
+Responsibilities
+
+Convert
+
+{
+    Time: ...,
+    V1: ...,
+    ...
+    Amount: ...
+}
+
+into
+
+{
+    features: [
+        Time,
+        V1,
+        ...
+        Amount
+    ]
+}
+
+The order MUST exactly match
+
+Time
+
+V1-V28
+
+Amount
+
+Use one shared REQUIRED_COLUMNS constant.
+
+==========================================================
+TASK 2
+
+Update upload.controller.js
+
+After validation
+
+call
+
+featureMapper.service.js
+
+Convert every row
+
+↓
+
+transactions
+
+↓
+
+predictTransactions()
+
+↓
+
+receive prediction response
+
+==========================================================
+TASK 3
+
+Merge Results
+
+Return
+
+[
+    {
+        transaction: {
+            Time: ...,
+            Amount: ...
+        },
+        prediction: {
+            fraud_probability: ...,
+            is_fraud: ...,
+            risk_level: ...
+        }
+    }
+]
+
+Do not return all 30 features.
+
+Only include
+
+Time
+
+Amount
+
+Prediction
+
+==========================================================
+TASK 4
+
+Summary
+
+Return
+
+summary
+
+{
+
+totalTransactions
+
+fraudDetected
+
+safeTransactions
+
+highRisk
+
+mediumRisk
+
+lowRisk
+
+averageFraudProbability
+
+processingTime
+
+}
+
+==========================================================
+TASK 5
+
+Response
+
+Return
+
+{
+
+success
+
+summary
+
+predictions
+
+}
+
+==========================================================
+TASK 6
+
+Logging
+
+Log
+
+CSV parsed
+
+Validation complete
+
+Prediction started
+
+Prediction finished
+
+FastAPI response time
+
+Total processing time
+
+==========================================================
+TASK 7
+
+Error Handling
+
+FastAPI unavailable
+
+↓
+
+503
+
+Prediction failure
+
+↓
+
+500
+
+Mapping failure
+
+↓
+
+500
+
+Validation errors
+
+↓
+
+422
+
+==========================================================
+TASK 8
+
+Performance
+
+Avoid unnecessary copies.
+
+Map only once.
+
+Reuse existing services.
+
+Keep memory usage low.
+
+==========================================================
+TASK 9
+
+Do NOT
+
+Delete uploaded files
+
+Create database records
+
+Generate reports
+
+Generate charts
+
+Authenticate users
+
+==========================================================
+TASK 10
+
+Testing
+
+Provide
+
+Sample CSV
+
+Postman request
+
+curl request
+
+Expected response
+
+==========================================================
+Architecture
+
+Frontend
+
+↓
+
+Upload CSV
+
+↓
+
+Express
+
+↓
+
+CSV Parser
+
+↓
+
+CSV Validation
+
+↓
+
+Feature Mapper
+
+↓
+
+FastAPI Service
+
+↓
+
+XGBoost
+
+↓
+
+Prediction
+
+↓
+
+Merge Results
+
+↓
+
+Return JSON
+
+==========================================================
+Deliverables
+
+Create
+
+services/featureMapper.service.js
+
+Update upload.controller.js
+
+Reuse
+
+fastapi.service.js
+
+Do not duplicate code.
+
+Keep architecture clean.
+
+Controllers should never use Axios directly.
+
+Only services communicate with FastAPI.
+
+==========================================================
+After implementation explain
+
+Every file
+
+Every step
+
+How the data flows
+
+How this prepares the frontend dashboard
+
+Do not over-engineer.
+
+Keep the project modular, production-ready, and beginner-friendly.

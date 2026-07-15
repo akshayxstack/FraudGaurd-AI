@@ -1,0 +1,13 @@
+─────────────────────────────────────────
+  FraudGuard AI — Backend
+─────────────────────────────────────────
+  Status  : Running
+  Port    : 5000
+  Env     : development
+─────────────────────────────────────────
+[UploadController] Upload received: "valid.csv" (1011.00 B)
+[UploadController] CSV parsing started: "1783941401274-83e16eca-valid.csv"
+[UploadController] Rows parsed: 4
+[UploadController] Validation complete — 4 valid row(s).
+[UploadController] Prediction started — sending 4 transaction(s) to FastAPI.
+[UploadController] FastAPI unreachable after 17ms: connect ECONNREFUSED 127.0.0.1:8001

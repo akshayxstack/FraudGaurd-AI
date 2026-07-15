@@ -1,0 +1,360 @@
+You are a Senior Backend Engineer specializing in Node.js, Express.js, data processing, and production API design.
+
+Continue building my FraudGuard AI backend.
+
+Current Progress
+================
+
+✔ Express backend completed
+✔ FastAPI integration completed
+✔ CSV upload infrastructure completed
+✔ Multer configuration
+✔ Upload validation
+✔ Upload controller
+✔ Upload routes
+✔ Uploaded files saved safely
+✔ Proper logging
+✔ Proper error handling
+
+DO NOT MODIFY ANY EXISTING FUNCTIONALITY.
+
+The next milestone is:
+
+CSV Parsing & Data Validation
+
+DO NOT call FastAPI yet.
+
+DO NOT generate predictions.
+
+DO NOT delete uploaded files yet.
+
+=========================================================
+OBJECTIVE
+=========================================================
+
+Take the uploaded CSV file and convert it into a validated JSON structure that is ready for ML prediction.
+
+Pipeline:
+
+CSV Upload
+
+↓
+
+Read CSV
+
+↓
+
+Parse Rows
+
+↓
+
+Validate Columns
+
+↓
+
+Validate Data Types
+
+↓
+
+Normalize Data
+
+↓
+
+Return Parsed JSON
+
+=========================================================
+TASK 1
+=========================================================
+
+Install and configure
+
+csv-parser
+
+Use streaming.
+
+Do NOT load the entire file into memory at once.
+
+=========================================================
+TASK 2
+
+Create
+
+services/csvParser.service.js
+
+Responsibilities
+
+• Read uploaded CSV
+
+• Stream rows
+
+• Convert rows into JSON
+
+• Return an array of objects
+
+No Express code.
+
+No FastAPI code.
+
+Pure parsing logic.
+
+=========================================================
+TASK 3
+
+Create
+
+services/csvValidation.service.js
+
+Responsibilities
+
+Validate:
+
+Required columns exist
+
+No missing required columns
+
+No duplicate columns
+
+No empty rows
+
+No empty headers
+
+Numeric fields are valid
+
+Return detailed validation errors.
+
+=========================================================
+TASK 4
+
+Expected Schema
+
+The uploaded CSV must contain exactly these columns:
+
+Time
+V1
+V2
+V3
+V4
+V5
+V6
+V7
+V8
+V9
+V10
+V11
+V12
+V13
+V14
+V15
+V16
+V17
+V18
+V19
+V20
+V21
+V22
+V23
+V24
+V25
+V26
+V27
+V28
+Amount
+
+Exactly 30 features.
+
+Do not require Class because prediction data won't have labels.
+
+=========================================================
+TASK 5
+
+Validation Rules
+
+Reject CSV if:
+
+Missing required column
+
+Duplicate column
+
+Extra unexpected column
+
+Wrong column order
+
+Empty file
+
+Empty row
+
+Non-numeric value
+
+Null value
+
+Whitespace-only value
+
+Return meaningful errors.
+
+=========================================================
+TASK 6
+
+Controller Update
+
+Update upload.controller.js
+
+After upload:
+
+Read CSV
+
+Validate CSV
+
+Return
+
+{
+  "success": true,
+  "totalRows": ...,
+  "totalColumns": ...,
+  "columns": [...],
+  "preview": [
+      first 5 parsed rows
+  ],
+  "message": "CSV parsed successfully"
+}
+
+DO NOT call FastAPI.
+
+=========================================================
+TASK 7
+
+Utilities
+
+Create reusable helper functions if necessary.
+
+Do not duplicate logic.
+
+=========================================================
+TASK 8
+
+Logging
+
+Log
+
+CSV parsing started
+
+Rows parsed
+
+Validation success
+
+Validation failure
+
+Time taken
+
+=========================================================
+TASK 9
+
+Error Handling
+
+400
+
+Invalid CSV
+
+422
+
+Validation failed
+
+500
+
+Parser error
+
+Use consistent JSON responses.
+
+=========================================================
+TASK 10
+
+Performance
+
+Use streams.
+
+Avoid blocking Node.js.
+
+Avoid unnecessary object copies.
+
+=========================================================
+TASK 11
+
+Testing
+
+Provide:
+
+Sample valid CSV
+
+Sample invalid CSV
+
+Postman instructions
+
+curl instructions
+
+=========================================================
+IMPORTANT
+
+DO NOT
+
+Call FastAPI
+
+Generate predictions
+
+Delete uploaded files
+
+Generate reports
+
+Authenticate users
+
+Store database records
+
+=========================================================
+Architecture
+
+Frontend
+
+↓
+
+Upload
+
+↓
+
+Multer
+
+↓
+
+CSV Parser Service
+
+↓
+
+CSV Validation Service
+
+↓
+
+Controller
+
+↓
+
+Return Parsed JSON
+
+=========================================================
+Deliverables
+
+Create:
+
+services/csvParser.service.js
+
+services/csvValidation.service.js
+
+Update upload.controller.js
+
+Only modify what is required.
+
+Keep the architecture modular, production-ready, scalable, and beginner-friendly.
+
+Do not over-engineer the solution.
+
+At the end explain:
+
+- Every file created
+- Request flow
+- How this prepares the next phase (sending validated rows to FastAPI for prediction)
